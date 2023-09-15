@@ -1,0 +1,27 @@
+<div class="container">
+  <%= form_with(url: [@order , orderlist]) do |form| %>
+    <% if orderlist.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(orderlist.errors.count, "error") %> prohibited this orderlist from being saved:</h2>
+        <ul>
+          <% orderlist.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div>
+        <% options = options_from_collection_for_select(@pizzas, 'id', 'name') %>
+        <%= form.select :pizza,  options %>
+    </div>
+    <div>
+      <%= form.label :size%>
+      <%= form.select :size, ['Small', 'medium', 'large']%>    
+
+    </div>
+
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>

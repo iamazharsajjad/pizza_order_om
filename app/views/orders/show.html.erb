@@ -1,0 +1,25 @@
+<div class="container mt-5">
+	<%= link_to "Add Item", new_order_orderlist_path(@order)%>
+	<div class = 'row'>
+		<div class="col-6">
+			ID: <%=@order.id%><br/>
+			Created: <%= @order.created_at%><br/>
+			Promotion Code: <%= @order.promotion_code%><br/>
+		</div>
+		<div class="col-6">
+			Items:
+			<ul>
+				<%@order.orderlists.each do |orderlist| %>
+					<li> <%= orderlist.pizza.name %>(<%= orderlist.size %>)</li>	
+				<% end %>
+			</ul>
+		</div>
+		<div class="mt-4">
+			<% if @order.completed? %>
+				<p>Order is completed</p>
+			<% else %>
+				<%= button_to 'Complete', order_complete_order_path(@order), method: :patch%>
+			<% end%>
+		</div>
+	</div>
+</div>

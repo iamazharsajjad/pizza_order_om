@@ -5,3 +5,21 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+Pizza.destroy_all
+
+Pizza.create!([{
+  name: "Tonno",
+  description: "A.",
+  price: 45.00
+},{
+  name: "Margherita",
+  description: "B.",
+  price: 55.00
+},{
+  name: "Salami",
+  description: "C.",
+  price: 65.00
+},])
+
+p "Created #{Pizza.count} Pizzas"
